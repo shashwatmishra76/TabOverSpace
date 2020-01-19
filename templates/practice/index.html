@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+  TabOverSpace | Practice
+{% endblock %}
+
+{% block add-css-files %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/practice.css' %}">
+{% endblock %}
+
+{% block main-content %}
+  <div id="Leaderboard" class="raleway" style="text-align:center; margin-top:150px; color:aqua;">
+    <h1>Practice</h1>
+  </div>
+  <div class="container">
+    <p style="color:grey;text-align:center;margin-top:20px;">Last topic you practiced : <span style="color:white"> &nbsp;Algorithms - Merge Sort </span></p>
+    <div class="line"></div>
+    <div class="row" style="margin:12px;padding:20px;margin-bottom:20px;">
+      <p class="col-md-2 practice-box" ><span style="display: block;">
+        Problem Solving<br><br>
+        <a href="{% url 'practice:subdomain' track='algorithms' subdomain='warmup' %}"><span style="color:aqua">Algorithms</span></a><br><br>
+        <a href="{% url 'practice:subdomain' track='data_structures' subdomain='advanced' %}"><span style="color:aqua">Data Structures</span></a><br><br></span>
+      </p>
+      <div class="box"></div>
+      <p class="col-md-2 practice-box"><span style="display: block;">
+        Languages<br><br>
+        <a href = "{% url 'practice:subdomain' track='cpp' subdomain='introduction' %}"><span style="color:aqua">C++</span></a><br><br>
+        <a href = "{% url 'practice:subdomain' track='java' subdomain='advanced' %}"><span style="color:aqua">Java</span></a><br><br>
+        <a href = "{% url 'practice:subdomain' track='python' subdomain='classes' %}"><span style="color:aqua">Python</span></a><br><br><br></span>
+      </p>
+      <div class="box"></div>
+      <p class="col-md-2 practice-box"><span style="display: block;">
+          Specialized Skills<br><br><a href = ""><span style="color:aqua">Bioinformatics</span></a><br><br></span>
+      </p>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,474 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+TabOverSpace | Question
+{% endblock %}
+
+{% block add-css-files %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/practice.css' %}" >
+
+<style type="text/css">
+    .box{
+        width:80px;
+        height: 1px;
+        background-color: aqua;
+        margin: auto;
+    }
+
+    .line{
+        width: 40%;
+        height: 1px;
+        background-color: aqua;
+        margin: auto;
+    }
+
+    .table_options{
+        color:white;
+        margin-left: 12px;
+    }
+
+    .table_first{
+        background-color: aqua;
+        width: 10px;
+        height:5px;
+    }
+
+    .box{
+        margin-left: 80px;
+    }
+
+    .question-box2{
+        color: white;
+        border-radius: 6px;
+        background-color: #0C0D0F;
+        height: auto;
+        width: 820px;
+        margin-bottom: 20px;
+        padding: 16px 8px 0px 16px;
+        box-shadow: 10px 10px #000;
+    }
+    .question-box3{
+        color: white;
+        border-radius: 6px 6px 0px 0px;
+        background-color: #0C0D0F;
+        height: auto;
+        width: 820px;
+        padding: 16px 0px 8px 0px;
+        min-width: 820px;
+        box-shadow: 10px 10px #000;
+    }
+    .green2{
+        border: none;
+        color: white !important;
+        padding: 4px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        float: right;
+        cursor: pointer;
+        border-radius: 4px;
+        box-shadow: 5px 5px #000;
+        margin-right: 4px;
+        background-color: #7033b5;
+        -webkit-transition-duration: 0.2s; /* Safari */
+        transition-duration: 0.2s;
+    }
+
+    @media all and (max-width: 1300px) {
+        #Notes { display: none; }
+    }
+    .green2:hover{
+        opacity: 0.9;
+    }
+    a.button {
+        -webkit-appearance: button;
+        -moz-appearance: button;
+        appearance: button;
+
+        text-decoration: none;
+        color: initial;
+    }
+    a:hover{
+        color: white;
+    }
+    body{
+        overflow-x: hidden;
+    }
+    .tagBox{
+        background: #111214;
+        padding-left: 6px;
+        padding-right: 6px;
+        font-weight: 600;
+        color: aliceblue;
+        font-size: 12px;
+        margin-right: 6px;
+        border-radius: 20px;
+        box-shadow: 2px 2px #000;
+    }
+    ::-webkit-scrollbar {  
+        width: 1em;
+    } 
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+    ::-webkit-scrollbar-thumb {  
+        background-color: white; 
+        outline: 1px solid #672E9F;
+    } 
+    .lead{
+        width: 230px;
+        height: 125px;
+        margin-top:20px;
+        border-radius: 6px;
+        box-shadow: 8px 8px #000;
+        margin-left: 40px !important;
+        background-image: linear-gradient(to bottom right, #8334b3, #3c33b2);
+    }
+
+    progress[value] {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    progress::-webkit-progress-bar{
+        background-color: #fff;
+        width: 100%;
+    }
+
+    progress::-webkit-progress-value {
+        background-image: linear-gradient(to bottom right, #9be627, #3de31d) !important;
+    }
+</style>
+{% endblock %}
+
+{% block add-js-files %}
+<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+
+{% endblock %}
+
+{% block main-content %}
+<div class=" raleway" style="min-width: 1000px !important;width: 100%;display: inline-block">
+    <div class="row" style="margin-bottom:40px;margin-top: 150px">
+
+        <div style="margin-left: 95px;width: 250px;margin-top: 135.5px;cursor: pointer">
+
+            <div style="position: fixed" id="Notes">
+                <div style="color: aliceblue">
+                    <h6 id="noteHead">Quick Notes <span id="down">&#9660;</span><span id="up">&#9650;</span></h6>
+                    <textarea id="notes" style="width: 200px;height: 200px;border-radius: 4px;resize: none;margin-top: 10px;box-shadow: 8px 8px #000;background: #232323;border: none;outline: none;color: aliceblue;padding: 8px;font-size: 13px"></textarea>
+                </div>
+            </div>
+
+        </div>
+        <div>
+            <table>
+                <th>
+                    <div id="Leaderboard" class="raleway" style="text-align:left;color:#fff;margin-bottom:-20px;margin-left:6px"><p style="font-weight: 600"><span style="padding: 10px;font-size: 32px">{{section.track}}/{{section.name}}/></span></p>
+                    </div>
+                </th>
+                <tr>
+                    <table style="margin-left: 16px" id="question">
+                        <tr>
+                            <td style="padding: 0px">
+                                <p style="color: aliceblue;margin-top: 18px;font-size: 25px;width: 400px;word-wrap: break-word">{{question}}</p>
+                            </td>
+                            <td style="padding: 0px;vertical-align: bottom;padding-bottom: 20px">
+                                <a href="#compiler" style="text-decoration: none"><div class="green2" style="background-color: #7130ae;color: white;margin-left: 220px">Jump to Compiler<span style="font-size: 12px">&nbsp;&#9660;</span></div></a>
+                            </td>
+                        </tr>
+
+                    </table>
+                </tr>
+                <tr class="table_options">
+                    <td>
+                        <div class="question-box2">
+                            <table style="width: 700px;margin-bottom: 30px">
+                                <tr>
+                                    <td style="width: 330px">
+                                        <div style="white-space: nowrap;text-overflow: ellipsis;width: 300px;overflow: hidden">
+                                            <h5 style="margin-left:0px;margin-top:0px;margin-bottom: 10px;width: 120px">Problem Statement</h5>
+                                        </div>
+                                        <p style="font-weight: 100;margin-bottom: 30px">Recently Watson learned the concept of coprime numbers and now he wonders given an array A1, A2 . . . AN what is the size of the largest subset of the array such that the each pair of elements in the subset is coprime</p>
+                                        <h6 style="margin-bottom: 10px">
+                                            Input
+                                        </h6>
+                                        <p style="margin-bottom: 30px;font-weight: 100;"> First line contains T, the number of test cases.<br>
+                                            Each test case contains N in one line, number of elements in the array.<br>
+                                            Next line contains N space separated elements A1, A2 . . . AN.<br>
+                                        </p>
+                                        <h6 style="margin-bottom: 10px">
+                                            Output
+                                        </h6>
+                                        <p style="margin-bottom: 30px;font-weight: 100;">  For each test case, output the required answer in one line.
+                                            <br>
+                                        </p>
+                                        <h6 style="margin-bottom: 10px">
+                                            Constraints
+                                        </h6>
+                                        <p style="margin-bottom: 30px;font-weight: 100;">
+                                            1 ≤ T ≤ 10
+                                            <br>25% test data: 1 ≤ N ≤ 10
+                                            <br>75% test data: 1 ≤ N ≤ 50
+                                            1 ≤ Ai ≤ 50
+                                        </p>
+                                        <h6 style="margin-bottom: 10px">
+                                            Example
+                                        </h6>
+                                        <p style="margin-bottom: 30px;background:#232323;width:200px;padding:4px;font-family:monospace">Input<br>
+                                            5<br>
+                                            2 3 2 3 2<br><br>
+                                            Output<br>
+                                            23<br>
+
+
+                                        </p>
+                                        <h6 style="margin-bottom: 10px">
+                                            Explanation
+                                        </h6>
+                                        <p style="margin-bottom: 30px;font-weight: 100;">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div class="question-box3" id="compiler">
+                            <table style="margin-top: -8px">
+                                <tr style="align-content: flex-end">
+                                    <td style="text-align: end">
+                                        <div class="dropdown" style="padding-top: 20px;padding-bottom: 16px; margin-left: 540px">
+                                            <button id="label" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 160px;border-radius: 4px;font-size: 15px;text-align: left;border: none;outline: none;padding: 4px;cursor: pointer">
+                                                <table style="width:150px;margin-top: -2px">
+                                                    <tr>
+                                                        <td>
+                                                            <span id ="hello" style="margin-left: 10px;width: 100px">
+                                                                C++
+                                                            </span>
+                                                        </td>
+                                                        <td style="text-align: right">
+                                                            <span style="color: grey;font-size: 12px">&#9660;</span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </button>
+                                            <div id="langMenu" class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background: white">
+                                                <a class="dropdown-item" style="text-decoration: none;color: #0C0D0F;font-weight: 600">C++</a>
+                                                <a class="dropdown-item" style="text-decoration: none;color: #0C0D0F;font-weight: 600">Java</a>
+                                                <a class="dropdown-item" style="text-decoration: none;color: #0C0D0F;font-weight: 600">Python</a>
+                                            </div>
+                                        </div>
+                                    </td>    
+                                    <td>
+                                        <img id="reset" style="margin-left:10px;cursor: pointer" height="20px" width="20px" src="{% static 'assets/images/reset.png' %}"/>
+                                    </td>    
+                                    <td>
+                                        <img style="margin-left:10px" height="20px" width="20px" src="{% static 'assets/images/fit.png' %}"/>
+                                    </td>    
+                                    <td>
+                                        <div class="dropdown">
+                                            <img id="label" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:10px;cursor:pointer" height="20px" width="20px" src="{% static 'assets/images/settings.png' %}"/>
+
+                                            <div id="setMenu" class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background: white">
+                                                <a class="dropdown-item" style="text-decoration: none;color: #0C0D0F;font-weight: 600">Download Code</a>
+                                                <a class="dropdown-item" style="text-decoration: none;color: #0C0D0F;font-weight: 600">Upload Code</a>
+                                            </div>
+                                        </div>
+                                    </td> 
+                                </tr>
+
+                            </table>
+
+
+                        </div>
+                        <table style="width: 800px;margin-bottom: 20px">
+                            <tr style="padding: 0px">
+                                <td style="padding: 0px">
+                                    <form class="form font" method="post" action="">
+                                        {% csrf_token %}
+                                        <input type="hidden" class="username" id="code" name="username">
+                                        <div id="editor" onkeyup="myFunction()"></div>
+                                        <br>
+                                        <table style="margin-top: -15px;margin-left: 5px">
+                                            <tr>
+                                                <td>
+                                                    <input id="check" style="margin-left: -6px;margin-right: 2px" type="checkbox"/>
+                                                </td>
+                                                <td>
+                                                    <p style="color: aliceblue;padding-top: 12px;margin-right: 184px">Test against custom input</p>
+                                                </td>
+                                                <td>
+                                                    <input type="submit" disabled class="submit green2" value="Expected Output (3)" style="border: none;outline: none;background: white !important;color: black !important">
+                                                </td>
+                                                <td>
+                                                    <input type="submit" class="green2" value="Compile & Test" style="border: none;outline: none;">
+                                                </td>
+                                                <td>
+                                                    <input type="submit" disabled class="submit green2" value="Submit" style="outline: none;border: none;background: #F3D445;color: black!important;margin-right: -4px">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                    <div id="customInput">
+                                        <h6 style="color: aliceblue;margin-top: 30px;margin-bottom: 20px">Custom Input :</h6>
+                                        <textarea style="width:820px;height: 200px;font-family:monospace"></textarea>
+                                    </div>
+                                    <div id="output">
+                                        <h6 style="color: aliceblue;margin-top: 30px;margin-bottom: 20px">Output :</h6>
+                                        <div style="width: 820px;height: 300px;background: #232323;padding: 10px;overflow-y: auto;font-size: 15xpx;font-family: monospace;border-radius: 4px 0px 0px 4px">
+                                            <p style="color:white;font-weight: 100;">{{ query }}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-md-2" style="margin-top: 30px">
+            <div style="color: aliceblue;margin-left: 40px;margin-top: 108px">
+                <h6>Stats</h6>
+                <table style="width: 250px">
+                    <tr>
+                        <td style="font-weight: 100;margin-right: 20px">
+                            Difficulty
+                        </td>
+
+                        <td>
+                            Medium
+                        </td>
+                    </tr>    
+                    <tr>
+                        <td style="font-weight: 100;margin-right: 20px">
+                            Accuracy
+                        </td>
+
+                        <td>
+                            12%
+                        </td>
+                    </tr>    
+                    <tr>
+                        <td style="font-weight: 100;padding-right: 20px">
+                            Submitted By
+                        </td>
+
+                        <td>
+                            32000
+                        </td>
+                    </tr>    
+                </table>
+            </div>
+            <div class="topicWeek" style="padding: 12px;margin-left: 30px;margin-top: 50px;width: auto">
+                <p style="color: aliceblue">Points to next badge</p>
+                <table style="width: 235px;margin-bottom: -7px">
+                    <tr>
+                        <td>
+                            <p style="color: aliceblue;font-weight: 200">Gold</p>
+                        </td>
+                        <td>
+                            <p style="color: aliceblue;font-weight: 200;margin-left: 0px;width: auto;overflow-x: hidden;text-align: right">25/100</p>
+                        </td>
+                    </tr>
+                </table>   
+                <progress value="25" max="100" style="width:233px;height: 10px;margin-bottom: 10px"></progress>
+            </div>
+            <div class="topicWeek" style="padding: 12px;margin-left: 30px;margin-top: 20px;width: auto">
+                <p style="color: aliceblue">Your marks</p>
+                <table style="width: 235px;margin-bottom: -7px">
+                    <tr>
+                        <td>
+                            <p style="color: aliceblue;font-weight: 200">Points</p>
+                        </td>
+                        <td>
+                            <p style="color: aliceblue;font-weight: 200;margin-top: 0px;margin-left: 0px;width: auto;overflow-x: hidden;text-align: right">2/5</p>
+                        </td>
+                    </tr>
+                </table>   
+                <progress value="2" max="5" style="width:233px;height: 10px;margin-bottom: 10px"></progress>
+            </div>
+            <div class="topicWeek" style="padding: 12px;margin-left: 30px;margin-top: 20px;width: auto">
+                <p style="color: aliceblue">Your code time v/s others</p>
+                <table style="width: 235px;margin-bottom: -7px">
+                    <tr>
+                        <td>
+                            <p style="color: aliceblue;font-weight: 200">Percentile</p>
+                        </td>
+                        <td>
+                            <p style="color: aliceblue;font-weight: 200;margin-left: 0px;width: auto;overflow-x: hidden;text-align: right">97%</p>
+                        </td>
+                    </tr>
+                </table>   
+                <progress value="97" max="100" style="width:233px;height: 10px;margin-bottom: 110px"></progress>
+            </div>
+            <div style="margin-left: 40px;color: aliceblue; margin-top: 245px">
+                <h6>Average Time Taken</h6>
+                <p style="font-weight: 100;margin-bottom: 30px">35 : 01 mins</p>
+
+                <h6>Your Time Taken</h6>
+                <p style="font-weight: 100;margin-bottom: 30px">12 : 01 mins</p>
+
+                <h6>Test Cases passed</h6>
+                <p style="font-weight: 100;margin-bottom: 30px">17/35</p>
+            </div>
+            <a href="#question"><div class="green2" style="background-color: #7130ae;color: white;margin-left: 40px;float: none!important">Jump to Question <span style="font-size: 12px">&nbsp;&#9650;</span></div></a>
+
+            <!--    <canvas style="margin-left: 38px;margin-top: 40px" id="myChart" width="400" height="400"></canvas> -->
+        </div> 
+    </div>
+</div>
+<script src="{% static 'js/ace-builds-master/src-noconflict/ace.js' %}" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+
+    function myFunction() {
+        var code = editor.getValue();
+        var username = document.getElementById("code")
+        username.value = code
+    }
+
+    $('#reset').click(function(){
+        editor.session.setValue("")
+    });
+
+</script>
+<script>
+
+    $('#customInput').hide();
+    $('#up').hide();
+
+    $('#langMenu a').click(function(){
+        $('#hello').text($(this).text());
+    });
+
+    $('#check').click(function(){
+        if($(this).prop("checked") == true){
+            $('#customInput').fadeIn();
+        }
+        else if($(this).prop("checked") == false){
+            $('#customInput').fadeOut();
+        }    });
+
+    var x = 0;
+    $('#notes').hide();
+
+    $('#noteHead').click(function(){
+        if(x % 2 == 0){
+            $('#notes').fadeIn();
+            $('#up').show();
+            $('#down').hide();
+        }
+        else {
+            $('#notes').fadeOut();
+            $('#down').show();
+            $('#up').hide();
+        }
+        x++;
+    });
+    // Code
+</script>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+  TabOverSpace | {{ title }}
+{% endblock %}
+
+{% block add-css-files %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/explore.css' %}">
+{% endblock %}
+
+{% block add-js-files %}
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+  <script src="{% static 'js/explore.js' %}"></script>
+{% endblock %}
+
+{% block main-content %}
+<div id="Leaderboard" class="raleway" style="text-align:center; margin-top:150px; color:aqua;"><h1>Explore</h1></div>
+<div class="container">
+  <p style="color:grey;text-align:center;margin-top:20px;">Topic :  <span style="color:white"> &nbsp;How To Develop a Chatbot From Scratch </span></p>
+  <div class="line"></div>
+  {% verbatim %}
+  <div class="row" style="margin-bottom:20px;" ng-app="myApp" ng-controller="myCtrl" >
+    <div class="box2"></div>
+    <table style="margin-left:40px">
+      <tbody>
+        <tr>
+          <td>
+            <div id="container">
+              <div class="main_image"></div>
+              <h2 class="heading">How to Develop a Chatbot from Scratch</h2><br><br>
+              <h3 style="color:white;padding:16px">By Sanyog Ghosh</h3>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="main_content">
+              <p>
+                Those interactions can be straightforward, like asking a bot about the weather report, or more complex, like having a bot troubleshoot a problem with your internet service.<br>
+
+                Here are some tutorials to get you started:<br>
+
+                If you are a beginner, read articles on Chatbot Magazine or start with “The Complete Guide To Chatbots — Development To Promotions.”<br>
+                Prepare a chatbot conversation — “How to design a conversation for chatbot?” and “Design Framework for Chatbots.”<br>
+                For building a chatbot, read “The Complete Guide To Bot Frameworks” and “14 most powerful platforms to build a chatbot.”<br>
+                For business — 100 Best Bots For Brands & Businesses<br>
+                For making an AI based intelligent chatbot — “How to make chatbot intelligent?”<br>
+                NLP & Machine Learning Tutorial with Code & Github: “Ultimate Guide to Leveraging NLP & Machine Learning for your Chatbot”<br>
+
+                We have written this answer for a generic chatbot which can be published on any platform such as Facebook, Kik, Slack, Telegram or website.<br>
+
+                The following steps will be helpful when developing a chatbot:<br>
+
+                Identify the opportunities for an AI-based chatbot<br>
+                Understanding what are the goals of building a chatbot<br>
+                Designing a chatbot conversation<br>
+                Building a chatbot using frameworks or development (non-coding) platforms<br>
+
+                1. Identify the Opportunities For an AI-Based Chatbot<br>
+
+                Before building a chatbot, you should first understand the opportunities for an AI-based chatbot.<br>
+              </p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endverbatim %}
+
+{% endblock %}

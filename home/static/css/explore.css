@@ -1,0 +1,51 @@
+#container{
+  position: relative;
+  width: 100%;
+}
+.heading{
+ position: absolute;
+ color: white;
+ padding: 16px;
+ z-index: 10;
+}
+.main_image{
+  width:100%;
+  position: absolute;
+  padding: 16px;
+  height:400px;
+  opacity: 1;
+  margin-top: 12px;
+  border-radius: 4px 4px 0 0;
+  background-image: url(https://spectrum.ieee.org/image/MzA2NzUxNA.jpeg);
+  background-position: center center;
+  background-size: cover;
+  -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+.main_content{
+  width:100%;
+  margin-top: 40px;
+  height: 400px;
+  padding: 16px;
+  background-color: white;
+  text-decoration-color: black;
+  border-radius: 0 0 4px 4px;
+}
+.question-box{
+  width:800px;
+  margin-bottom: 0;
+  background-color: white;
+  height:800px;
+}
+table {
+  border-collapse: collapse;
+}
+.table_optionsA{
+  width: 200px;
+  height: 200px;
+  margin-bottom: 0;
+}
+td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

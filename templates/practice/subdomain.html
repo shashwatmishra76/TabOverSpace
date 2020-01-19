@@ -1,0 +1,348 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load custom_url %}
+
+{% block title %}
+  TabOverSpace | Practice
+{% endblock %}
+
+{% block add-css-files %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/practice.css' %}">
+
+<style type="text/css">
+    .box{
+        width:80px;
+        height: 1px;
+        background-color: aqua;
+        margin: auto;
+    }
+
+    .line{
+        width: 40%;
+        height: 1px;
+        background-color: aqua;
+        margin: auto;
+    }
+
+    .table_options{
+        color:white;
+        margin-left: 12px;
+    }
+
+    .table_first{
+        background-color: aqua;
+        width: 10px;
+        height:5px;
+    }
+
+    .box{
+        margin-left: 80px;
+    }
+
+    .question-box2{
+        color: white;
+        border-radius: 6px;
+        background-color: #0C0D0F;
+        height: auto;
+        width: 820px;
+        margin-bottom: 20px;
+        padding: 16px 8px 16px 12px;
+        min-width: 600px;
+        box-shadow: 10px 10px #000;
+    }
+
+    .green{
+        border: none;
+        color: white !important;
+        padding: 4px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        float: right;
+        border-radius: 4px;
+        box-shadow: 5px 5px #000;
+        margin-right: 4px;
+        background-color: #7033b5;
+        -webkit-transition-duration: 0.2s; /* Safari */
+        transition-duration: 0.2s;
+    }
+
+    .green:hover {
+        background-color: #3c33b2; /* Green */
+        color: white;
+    }
+
+    a.button {
+        -webkit-appearance: button;
+        -moz-appearance: button;
+        appearance: button;
+
+        text-decoration: none;
+        color: initial;
+    }
+    a:hover{
+        color: white;
+    }
+    .tagBox{
+        background: #111214;
+        padding-left: 6px;
+        padding-right: 6px;
+        font-weight: 600;
+        color: aliceblue;
+        font-size: 12px;
+        margin-right: 6px;
+        border-radius: 20px;
+        box-shadow: 2px 2px #000;
+    }
+    .lead{
+        width: 230px;
+        height: 125px;
+        margin-top:20px;
+        border-radius: 6px;
+        box-shadow: 8px 8px #000;
+        margin-left: 40px !important;
+        background-image: linear-gradient(to bottom right, #8334b3, #3c33b2);
+    }
+
+    progress[value] {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    progress::-webkit-progress-bar{
+        background-color: #fff;
+        width: 100%;
+    }
+
+    progress::-webkit-progress-value {
+        background-image: linear-gradient(to bottom right, #9be627, #3de31d) !important;
+    }
+    body{
+        overflow-x: hidden
+    }
+</style>
+{% endblock %}
+
+{% block add-js-files %}
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+  <script>
+    var subdomains = [];
+    {% for x in section.track.subdomain_set.all %}
+    subdomains.push({selection:"no", name:'{{ x.name }}', link:"{% url 'practice:subdomain' track=track subdomain=x.name %}"},);
+    {% endfor %}
+    for (var x = 0; x < subdomains.length; x++) {
+       if (subdomains[x].name==='{{ section.name }}') {
+         subdomains[x].selection = 'yes';
+       }
+    }
+
+    var questions = [];
+    {% for x in section.question_set.all %}
+    questions.push({usually:"10", question:'{{ x.title }}', link:"{% url 'practice:question' track=track subdomain=section.name question=x.title|custom_url %}", difficulty:"Easy"},)
+    {% endfor %}
+
+    var app = angular.module("myApp",[]);
+    app.controller("myCtrl", function($scope){
+
+      $scope.myObj = subdomains;
+      $scope.myObj2 = questions
+    });
+
+
+</script>
+<script src="{% static 'js/Chart.js' %}"></script>
+{% endblock %}
+
+{% block main-content %}
+<div class=" raleway">
+
+    {% verbatim %}
+    <div class="row" style="margin-bottom:40px;margin-top: 150px" ng-app="myApp" ng-controller="myCtrl" ng-cloak >
+
+        <div class="col-md-2" style="margin-left: 80px">
+            <table style="color: white !important;text-decoration: none;margin-top: 56px;margin-bottom: 5px">
+                <tr ng-click="hideShow=(hideShow ? false : true)" style="cursor: pointer">
+                    <td style="color:white;margin-top:20px;font-size:20px;cursor: pointer;word-break: break-all;width: 130px" id="difBox" >Difficulty&nbsp;&nbsp;&nbsp;</td>
+                    <td style="color:white;font-size: 20px">
+                        <span ng-if="!hideShow">&#9660;</span><span ng-if="hideShow">&#9650;</span>
+                    </td>
+                </tr>
+                <tr ng-repeat="x in myObj" class="table_options" ng-if="hideShow" data-aos="fade-in">
+                    <td id="abc"  ng-click="update(x)"  class="table1" style="color: white;font-size: 15px;word-break: break-all">&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;color: aliceblue;font-weight: 100" href={{x.link}}>{{x.name}}</a></td>
+
+                    <td style="padding-top: 6px;padding-left: 5px;">
+                        <input type="checkbox" style="color: aqua">
+                    </td>
+                </tr>
+
+            </table>
+            <table style="color: white !important;text-decoration: none;margin-bottom: 5px">
+                <tr ng-click="hideShow2=(hideShow2 ? false : true)" style="cursor: pointer">
+                    <td style="color:white;margin-top:20px;font-size:20px;cursor: pointer;word-break: break-all;width: 130px" id="difBox">Companies &nbsp;&nbsp;&nbsp;</td>
+                    <td style="color:white;font-size: 20px">
+                        <span ng-if="!hideShow2">&#9660;</span><span ng-if="hideShow2">&#9650;</span>
+                    </td>
+                </tr>
+                <tr ng-repeat="x in myObj" class="table_options" ng-if="hideShow2" data-aos="fade-in">
+                    <td id="abc"  ng-click="update(x)"  class="table1" style="color: white;font-size: 15px;word-break: break-all">&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;color: aliceblue;font-weight: 100"  href={{x.link}}>{{x.name}}</a></td>
+
+                    <td style="padding-top: 6px;padding-left: 5px;">
+                        <input type="checkbox">
+                    </td>
+                </tr>
+
+            </table>
+            {% endverbatim %}
+            <table style="color: white !important;text-decoration: none">
+                <tr ng-click="hideShow3=(hideShow3 ? false : true)" style="cursor: pointer">
+                    <td style="color:white;margin-top:20px;font-size:20px;cursor: pointer;;word-break: break-all;width: 130px" id="difBox" >{{section.track}} &nbsp;&nbsp;&nbsp;</td>
+                    <td style="color:white;font-size: 20px">
+                        <span ng-if="!hideShow3">&#9660;</span><span ng-if="hideShow3">&#9650;</span>
+                    </td>
+                </tr>
+                {% verbatim %}
+                <tr ng-repeat="x in myObj" class="table_options" ng-if="hideShow3" data-aos="fade-in">
+                    <td id="abc"  ng-click="update(x)"  class="table1" style="color: white;font-size: 15px;word-break: break-all">&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;color: aliceblue;font-weight: 100" href={{x.link}}>{{x.name}}</a></td>
+
+                    <td style="padding-top: 6px;padding-left: 5px;">
+                        <input type="checkbox">
+                    </td>
+                </tr>
+                {% endverbatim %}
+
+            </table>
+        </div>
+
+        <div>
+            <table>
+                <th>
+                    <div id="Leaderboard" class="raleway" style="text-align:left;color:#fff;margin-bottom:-20px"><p style="font-weight: 600"><span style="padding: 10px;font-size: 32px">{{section.track}}/{{section.name}}/></span></p>
+                    </div>
+                </th>
+                <tr style="color: aliceblue;padding: 0px">
+                    <td style="width: 0px !important;text-align: end">
+                        <div class="dropdown">
+                            <button id="label" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #18191D; border: none;outline: none;cursor: pointer;margin-bottom: 10px">
+                                <span style="color: aliceblue;font-weight: 200;font-size: 15px">Sort By &nbsp;&nbsp;</span>
+                                <span id ="hello" style="color: violet">
+                                    Accuracy
+                                </span>
+                                <span style="color: aliceblue">&#9660;</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background: white">
+                                <a class="dropdown-item" href="#" style="text-decoration: none;color: #0C0D0F;font-weight: 600">Accuracy</a>
+                                <a class="dropdown-item" href="#" style="text-decoration: none;color: #0C0D0F;font-weight: 600">Submissions</a>
+                                <a class="dropdown-item" href="#" style="text-decoration: none;color: #0C0D0F;font-weight: 600">Average Time</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr ng-repeat="x in myObj2" class="table_options">
+                    {% verbatim %}
+
+                    <td>
+                        <div class="question-box2">
+                            <table style="width: 800px">
+                                <tr>
+                                    <td style="width: 330px">
+                                        <div style="white-space: nowrap;text-overflow: ellipsis;width: 300px;overflow: hidden">
+                                            <h5 style="margin-left:4px;margin-top:0px;margin-bottom: 20px;width: 120px">{{x.question}}</h5>
+                                        </div>
+                                        <table style="margin-bottom: 7px">
+                                            <tr>
+                                                <td style="padding: 0px">
+                                                    <div class="tagBox" style="background-color: aliceblue;color: black">Arrays</div>
+                                                </td>
+
+                                                <td style="padding: 0px">
+                                                    <div class="tagBox" style="background-color: aliceblue;color: black">Heaps</div>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                        <table style="margin-bottom: 7px">
+                                            <tr>
+                                                <td style="padding: 0px">
+                                                    <div class="tagBox" style="background-color: #7e5ef0;color: white">Searching</div>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                        <table>
+                                            <tr>
+                                                <td style="padding: 0px">
+                                                    <div class="tagBox" style="background-color: #7130ae;color: white">Tesco</div>
+                                                </td>
+
+                                                <td style="padding: 0px">
+                                                    <div class="tagBox" style="background-color: #7130ae;color: white">Amazon</div>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </td>
+                                    <td style="width: 220px">
+                                        <div style="white-space: nowrap;text-overflow: ellipsis;width: 200px;overflow: hidden;margin-top: 8px">
+                                            <h6 style="margin-left:4px;margin-top:0px;margin-bottom: 12px;width: 120px">{{x.difficulty}}</h6>
+                                        </div>
+                                        <p style="margin-bottom: 4px"><span style="color:white;font-weight:100;font-size:15px;margin-left:4px">Accuracy &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300"> 90%</span></span> </p>
+
+                                        <p style="margin-bottom: 4px"><span style="color:white;font-weight:100;font-size:15px;margin-left:4px;">Submissions &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300"> 32000</span></span> </p>
+                                        <p style="margin-bottom: 0px"><span style="color:white;font-weight:100;font-size:15px;margin-left:4px;">Avg. Time &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300"> 32 mins</span></span> </p>
+                                    </td>
+                                    <td align="right" style="width: auto">
+                                        <a class="green" style="font-weight:600" id="button" href={{x.link}}>Attempt</a>
+                                    </td>
+                                    {% endverbatim %}
+
+                                    <td align="right" style="width: auto">
+                                        <img  id="bookmark"  width="30px" height="30px" src="{% static 'assets/images/bookmark.png' %}"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-md-2" style="margin-top: 30px">
+
+            <div class="lead">
+
+                <p style="color:white;font-size: 16px;padding-left: 12px;padding-top: 12px;font-weight: 600">Weekly Leaderboard</p>
+                <p style="color:white;font-size: 16px;margin-left: 12px;font-weight: 300">Rank <span style="color: #8a9e93;font-weight: 500">&nbsp;5</span>&nbsp;&nbsp; &nbsp;Score <span style="color: #8a9e93;font-weight: 500">&nbsp;756 ^</span></p>
+                <p style="margin-left:200px;margin-top: 10px;color: aliceblue;cursor: pointer">&#9660;</p>
+            </div>
+            <div class="lead">
+                <p style="color:white;font-size: 16px;padding-left: 12px;padding-top: 12px;font-weight: 600">College Leaderboard</p>
+                <p style="color:white;font-size: 16px;margin-left: 12px;font-weight: 300">Rank <span style="color: #8a9e93;font-weight: 500">&nbsp;5</span>&nbsp;&nbsp; &nbsp;Score <span style="color: #8a9e93;font-weight: 500">&nbsp;900 ^</span></p>
+                <p style="margin-left:200px;margin-top: 10px;color: white;cursor: pointer">&#9660;</p>
+            </div>
+            <div class="topicWeek" style="padding: 12px;margin-left: 30px;margin-top: 50px;width: auto">
+                <p style="color: aliceblue">Your Topic of the Week</p>
+                <table style="width: 235px;margin-bottom: -7px">
+                    <tr>
+                        <td>
+                            <p style="color: aliceblue;font-weight: 200;margin-top: 10px">Heaps</p>
+                        </td>
+                        <td>
+                            <p style="color: aliceblue;font-weight: 200;margin-top: 10px;margin-left: 0px;width: auto;overflow-x: hidden;text-align: right">122/1250Q</p>
+                        </td>
+                    </tr>
+                </table>
+                <progress value="52" max="125" style="width:233px;height: 10px;margin-bottom: 110px"></progress>
+            </div>
+        <!--    <canvas style="margin-left: 38px;margin-top: 40px" id="myChart" width="400" height="400"></canvas> -->
+        </div>
+    </div>
+</div>
+<script>
+    $('.dropdown-menu a').click(function(){
+        $('#hello').text($(this).text());
+    });
+    // Code
+</script>
+{% endblock %}

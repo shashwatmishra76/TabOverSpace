@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load custom_url %}
+{% block title %}
+  TabOverSpace | Explore
+{% endblock %}
+
+{% block add-css-files %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/explore.css' %}">
+{% endblock %}
+
+{% block main-content %}
+  <div id="Leaderboard" class="raleway" style="text-align:center; margin-top:150px; color:aqua;">
+    <h1>Explore</h1>
+  </div>
+  <div class="container" >
+    <p style="color:grey;text-align:center;margin-top:20px;">Last Topic Explored : <span style="color:white"> &nbsp;How To Develop a Chatbot From Scratch </span></p>
+    <div class="line"></div>
+    {% verbatim %}
+      <div class="row" style="margin-bottom:20px;" ng-app="myApp" ng-controller="myCtrl" >
+        <table>
+          <tr>
+            <td></td>
+            <td style="color:aqua;margin-top:20px;font-size:20px">SubTopics</td>
+            <td></td>
+          </tr>
+          <tr ng-repeat="x in myObj" ng-cloak class="table_options" >
+            <td style="background-color:aqua;width:1px;opacity:0" ng-style="{ 'background' : (x.selection == 'yes') ? 'aqua' : '#1C363E'}"></td>
+            <td ng-style="{ 'color' : (x.selection == 'yes') ? 'white' : 'white',
+                          'border' : (x.selection == 'yes') ? 'solid aqua' : '0px'}">
+              <a style="text-decoration:none;color:white;padding-right:10px"  href="{{x.link}}">&nbsp;&nbsp;&nbsp;{{x.name}}</a>
+            </td>
+          </tr>
+        </table>
+        <div class="box2"></div>
+        <div class="box2"></div>
+        <table style="margin-left:40px">
+          <td style="color:aqua;font-size:20px">Articles</td>
+          <tr ng-repeat="x in myObj2" class="table_optionsA" ng-cloak>
+            <td style="margin-bottom:200px;">
+              <div class="question-box" style="padding:0px !important;height:200px">
+                <div class="row">
+                  <div class="col-md-2">
+                    <div style="width:200px;height:200px;background-size:cover" ng-style="{'background-image':'url({{x.background}})'}"></div>
+                  </div>
+                  <div class="col-md-6" style="margin-left:70px;padding:20px">
+                    <p style="font-size:32px;font-weight:600">
+                      {{x.question}}
+                    </p>
+                    <p><span style="color:#1C363E;font-weight:500">{{x.duration}}</span> </p>
+                  </div>
+                </div>
+                <div>
+                  <a class="green" style="font-weight:800" id="button" href={{x.link}}>Explore</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+    </div>
+  </div>
+{% endverbatim %}
+{% endblock %}
+
+{% block add-js-files %}
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+  <script>
+    var subtopics = [];
+    {% for x in Subtopics %}
+    subtopics.push({selection:"no", name:'{{ x.name }}', link:"{% url 'explore:subtopic' subtopic=x.name|custom_url %}"},)
+    {% endfor %}
+    for (var x = 0; x < subtopics.length; x++) {
+    if (subtopics[x].name==='{{ section.name }}') {
+      subtopics[x].selection = 'yes';
+    }
+    }
+    var articles = [];
+    {% for x in section.article_set.all %}
+    articles.push({usually:"10", question:'{{ x.article }}', background:"https://cdn-images-1.medium.com/max/1200/0*oz2e-hQtsHOWzoB4.", link:"{% url 'explore:article' subtopic=section.name|custom_url article=x.article|custom_url %}", difficulty:"Easy"},)
+    {% endfor %}
+    var app = angular.module("myApp",[]);
+    app.controller("myCtrl", function($scope){
+    $scope.myObj = subtopics;
+    $scope.myObj2 = articles;
+    });
+  </script>
+{% endblock %}
+

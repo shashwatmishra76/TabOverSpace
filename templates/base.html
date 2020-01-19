@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="generator" content="Mobirise v4.6.7, mobirise.com">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <meta name="description" content="Web Site Generator Description">
+
+
+        <title>{% block title %}{% endblock %}</title>
+
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/imageedit-2.gif' %}">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/web/assets/mobirise-icons/mobirise-icons.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/tether/tether.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/bootstrap/css/bootstrap-grid.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/bootstrap/css/bootstrap-reboot.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/socicon/css/styles.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/dropdown/css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/theme/css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/mobirise/css/mbr-additional.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+        {% block add-css-files %}
+        {% endblock %}
+
+        <script type="text/javascript" src="{% static 'assets/web/assets/jquery/jquery.min.js' %}"></script>
+        <script src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
+                integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+                crossorigin="anonymous">
+        </script>
+
+
+        {% block add-js-files %}
+        {% endblock %}
+
+    </head>
+
+    <body style="background:#18191D;font-family:'Raleway', 'sans-serif'" class="width">
+        <section class="menu cid-qNIIFHaxZY" once="menu" id="menu1-e">
+            <nav   class="navbar navbar-expand beta-menu navbar-dropdown  navbar-fixed-top navbar-toggleable-sm bg-color transparent">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    </button>
+                    <div class="menu-logo">
+                        <div class="navbar-brand">
+                            <a class="navbar-caption text-white display-7" href="{% url 'home:index' %}">
+                            <span style="color: white;font-family: serif;font-size: 32px;font-weight: 600">
+                                /<span style="color: #F4D346">/</span>:_
+                            </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link link dropdown-toggle text-white display-4" href="" data-toggle="dropdown-submenu" aria-expanded="false">Practice</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item text-white display-4" href="" aria-expanded="false"></a>
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle text-white display-4" href="" data-toggle="dropdown-submenu" aria-expanded="false">Programming Languages</a>
+                                        <div class="dropdown-menu dropdown-submenu">
+                                            <a class="dropdown-item text-white display-4" href="{% url 'practice:subdomain' track='java' subdomain='advanced' %}">Java</a>
+                                            <a class="dropdown-item text-white display-4" href="{% url 'practice:subdomain' track='python' subdomain='classes' %}">Python</a>
+                                            <a class="dropdown-item text-white display-4" href="{% url 'practice:subdomain' track='cpp' subdomain='introduction' %}">C++</a>
+                                        </div>
+                                    </div>
+                                    <a class="dropdown-item text-white display-4" href="{% url 'practice:subdomain' track='algorithms' subdomain='warmup' %}" aria-expanded="false">Algorithms<br></a>
+                                    <a class="dropdown-item text-white display-4" href="{% url 'practice:subdomain' track='data_structures' subdomain='advanced' %}" aria-expanded="false">Data-Structures</a>
+                                    <a class="dropdown-item text-white display-4" href="" aria-expanded="false">BioInformatics</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link link text-white display-4" href="{% url 'leaderboard:index' %}" aria-expanded="false">Leaderboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link text-white display-4" href="{% url 'explore:index' %}" aria-expanded="false">Explore</a>
+                            </li>
+
+                            {% if user.username %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link link dropdown-toggle display-4" href="" data-toggle="dropdown-submenu" aria-expanded="false" style="color:aqua">{{user.username}}</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item text-white display-4" href="" aria-expanded="false"></a>
+                                    <div class="">
+                                        <a class="dropdown-item text-white display-4" href="{% url 'home:logout_user' %}" aria-expanded="false" >Logout</a>
+                                        <div style="width:80%;height:1px;background:white;margin:auto"></div>
+                                        <a class="dropdown-item text-white display-4"  aria-expanded="false"><span style="color:aqua">28</span> Points</a>
+                                    </div>
+                                </div>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link link login display-4" href="{% url 'home:login' %}"   aria-expanded="false">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link sign-in display-4" href="{% url 'home:register' %}" aria-expanded="false">Sign Up</a>
+                            </li>
+                            {% endif %}
+
+                        </ul>
+
+                    </div>
+                    </nav>
+                </section>
+
+            {% block main-content %}
+            {% endblock %}
+
+            <section class="engine">
+                <a href="https://mobirise.ws">Mobirise</a>
+            </section>
+
+            <section class="footer4 cid-qNJ6q8uWVQ" id="footer4-p" style="background: #0C0D0F !important">
+                <div class="container">
+                    <div class="row content mbr-white">
+                        <div class="col-md-4 justify-content-left raleway">
+
+                            <p class="mb-3 mbr-fonts-style foot-title display-7" style="left:0px !important;font-weight: 600">
+                                TabOverSpace
+                            </p>
+                            <a href="#" class="text-white">Compete</a><br>
+                            <a href="{% url 'explore:index' %}" class="text-white">Explore</a><br>
+                            <a href="{% url 'practice:index' %}" class="text-white">Practice</a><br>
+                            <a href="{% url 'leaderboard:index' %}" class="text-white">Leaderboard</a>
+                        </div>
+                        <div class="col-md-4 raleway">
+                            <p class="mb-3 mbr-fonts-style foot-title display-7" style="left:0px !important;font-weight: 600">
+                                Contact Us
+                            </p>
+                            <a href="{% url 'explore:index' %}" class="text-white">WhatsApp +91-9007160255</a><br>
+                            <a href="{% url 'practice:index' %}" class="text-white">Practice</a><br>
+                            <a href="{% url 'leaderboard:index' %}" class="text-white">Leaderboard</a>
+                        </div>
+                        <div class="col-md-4 raleway">
+                            <p class="mb-3 mbr-fonts-style foot-title display-7" style="left:0px !important;font-weight: 600">
+                                Important Links
+                            </p>
+                            <a href="{% url 'explore:index' %}" class="text-white">Terms of Service</a><br>
+                            <a href="{% url 'practice:index' %}" class="text-white">Privacy Policy</a><br>
+                            <a href="{% url 'leaderboard:index' %}" class="text-white">Licence</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <script type="text/javascript" src="{% static 'assets/popper/popper.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'assets/tether/tether.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'assets/smoothscroll/smooth-scroll.js' %}"></script>
+            <script type="text/javascript" src="{% static 'assets/touchswipe/jquery.touch-swipe.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'assets/parallax/jarallax.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'assets/viewportchecker/jquery.viewportchecker.js' %}"></script>
+            <script type="text/javascript" src="{% static 'assets/dropdown/js/script.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'assets/theme/js/script.js' %}"></script>
+            <script type="text/javascript" src="{% static 'assets/formoid/formoid.min.js' %}"></script>
+            <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+            <script>
+                AOS.init({ once: true, });
+            </script>
+
+            </body>
+        </html>

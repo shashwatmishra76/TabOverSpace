@@ -1,0 +1,382 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+TabOverSpace
+{% endblock %}
+
+{% block add-css-files %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block main-content %}
+<section class=" mbr-fullscreen mbr-parallax-background" id="header2-n" style="background:#0C0D0F !important">
+    <div class="container" style="text-align: center">
+        <div style="margin-bottom: 50px">
+            <div id="full" style="left: 80px !important;display: inline-block">
+                <p id="typedtext"> </p>
+            </div>
+        </div>
+        <div>
+            <p style="color:white">Join the brotherhood today.<br> Start coding now.</p>
+        </div>
+        <table style="margin-bottom: 30px;display: inline-block">
+            <tr>
+                <td>
+                    <div style="text-align: center;background: #F3D445;padding: 8px;width:100px;box-shadow: 1px 1px 1px 1px;font-weight: 500">
+                        <a style="text-decoration: none;color:#0C0D0F;" href="{% url 'home:register' %}"   aria-expanded="false">
+                            Sign Up
+                        </a></div>
+                </td>
+                <td style="padding-left: 20px">
+                    <div style="text-align: center; color:white;background: #161A1D;padding: 8px;width:100px;">
+                        <a style="text-decoration: none;color: white" href="{% url 'home:login' %}"   aria-expanded="false">
+                            Login
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div style="margin-bottom: 20px;">
+            <p style="color:white">Get in touch here.</p>
+        </div>
+
+
+        <table style="width: 150px;height:20px;display: inline-block">
+            <tr>
+                <td>
+                    <a href="https://www.linkedin.com/company/taboverspace/about/">
+                        <span class="mbr-iconfont mbr-iconfont-social socicon-linkedin socicon icon"></span>
+                    </a>
+                </td>
+                <td style="padding-left: 25px">
+                    <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social icon"></span>
+                </td>
+                <td style="padding-left: 25px">
+                    <span class="mbr-iconfont mbr-iconfont-social socicon-github socicon icon"></span>
+                </td>
+                <td style="padding-left: 25px">
+                    <span class="mbr-iconfont mbr-iconfont-social socicon-google socicon icon"></span>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section class="counters1 counters cid-qNJ4lEajBu cid-qNJ60w9EFF" id="counters1-o" style="background-color: #18191D !important;padding: 0px !important;height: auto;width: 100%vh !important;margin-top: 150px">
+    <nav class="row " style="padding: 0px !important;margin-right: 0px !important">
+        <nav id="sim_img" class="col-md-6" style="padding-right: 40px !important" data-aos="fade-right">
+            <img width="600px" height="600px" src="{% static 'assets/images/Capture.png' %}" />
+        </nav>
+        <nav class="col-md-6" style="margin-left: 0px !important;padding-right: 0px !important" data-aos="fade-left">
+            <div style="width: auto;margin-left: 62.5px;padding-left: 30px;height: 600px">
+                <h1 style="text-align: left;color: #F3D445;padding-bottom: 24px" data-aos="fade-left">
+                    Simulation
+                </h1>
+                <p style="text-align: left;color: darkgray" data-aos="fade-left">
+                    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                </p>
+
+                <p style="text-align: left;color: darkgray" data-aos="fade-left">
+                    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                </p>
+
+                <p style="text-align: left;color: darkgray" data-aos="fade-left">
+                    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                </p>
+                <p style="text-align: left;color: darkgray" data-aos="fade-left">
+                    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                </p>
+                <p style="text-align: left;color: darkgray" data-aos="fade-left">
+                    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                </p>
+                <div style="text-align: center;background: #F3D445;padding: 8px;color:#0C0D0F;width:200px;box-shadow: 10px 10px #101113;font-weight: 500;margin-top: 30px" data-aos="fade-left">Simulate</div>
+            </div>
+        </nav>
+    </nav>
+</section>
+
+
+<section id="hello" class="counters1 counters cid-qNJ4lEajBu cid-qNJ60w9EFF" id="counters1-o" style="background-color: #18191D !important;height: auto;width: 100%;padding-bottom: 0px !important">
+    <nav class="row " style="margin-left: 20px">
+        <nav class=" col-md-4" style="margin-top: 5%;padding-left: 100px;padding-bottom: 100px" >
+
+            <h1 style="text-align: left;color: #F3D445;padding-bottom: 24px" data-aos="fade-right">
+                Explore
+            </h1>
+            <p style="text-align: left;color: darkgray" data-aos="fade-right">
+                Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+            </p>
+
+            <p style="text-align: left;color: darkgray" data-aos="fade-right">
+                Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+            </p>
+
+            <p style="text-align: left;color: darkgray" data-aos="fade-right">
+                Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+            </p>
+            <p style="text-align: left;color: darkgray" data-aos="fade-right">
+                Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+            </p>
+            <p style="text-align: left;color: darkgray" data-aos="fade-right">
+                Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+            </p>
+            <div style="text-align: center;background: #F3D445;padding: 8px;color:#0C0D0F;width:200px;box-shadow: 10px 10px #101113;font-weight: 500;margin-top: 30px" data-aos="fade-left">Explore</div>
+        </nav>
+        <nav id="exp_img" class="justify-content-end" data-aos="fade-left" style="margin-left: auto">
+            <div class="">
+                <img width="700px" height="700px" src="{% static 'assets/images/books.png' %}"/>
+            </div>
+        </nav>
+
+    </nav>
+</section>
+<section class="counters1 counters cid-qNJ4lEajBu cid-qNJ60w9EFF" id="counters1-o" style="background-color: #18191D !important;padding: 0px !important;height: auto;width: 100%vh !important">
+    <nav class="row " style="padding: 0px !important;margin-right: 0px !important">
+        <nav id="sim_img" class="col-md-6" style="padding-right: 140px !important" data-aos="fade-right">
+            <img width="700px" height="600px" src="{% static 'assets/images/weight.png' %}" />
+        </nav>
+        <nav class="col-md-6" style="margin-left: 0px !important;padding-right: 0px !important">
+            <div style="width: 674.5px;height: auto;margin-left: auto">
+                <div id="practice_sec" style="width: auto;background: #0C0D0F;margin-left: 0px;padding-left: 30px;height: 600px">
+                    <h1 style="text-align: left;color: #F3D445;padding-bottom: 24px" data-aos="fade-left">
+                        Practice
+                    </h1>
+                    <p style="text-align: left;color: darkgray" data-aos="fade-left">
+                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                    </p>
+
+                    <p style="text-align: left;color: darkgray" data-aos="fade-left">
+                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                    </p>
+
+                    <p style="text-align: left;color: darkgray" data-aos="fade-left">
+                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                    </p>
+                    <p style="text-align: left;color: darkgray" data-aos="fade-left">
+                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                    </p>
+                    <p style="text-align: left;color: darkgray" data-aos="fade-left">
+                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                    </p>
+                    <div style="text-align: center;background: #F3D445;padding: 8px;color:#0C0D0F;width:200px;box-shadow: 10px 10px #000;font-weight: 500;margin-top: 30px" data-aos="fade-left">Practice</div>
+                </div>
+            </div>
+        </nav>
+    </nav>
+</section>
+<section class="counters1 counters cid-qNJ4lEajBu cid-qNJ60w9EFF" id="counters1-o" style="background-color: white ;width: 100%vh !important;color: black !important">
+    <nav class="row" style="margin: auto">
+        <nav class="row" style="margin: auto;padding-bottom: 40px;padding-top: 40px">
+            <nav class="col-md-12" style="margin-top:35px !important">
+                <div style="width: auto;margin: auto;padding-left: 0px;height: auto;padding-top: 0px">
+                    <h1 style="text-align: left">
+                        Meet The Team
+                    </h1>
+
+                </div>
+            </nav>
+
+        </nav>
+        <nav class="row" style="margin:auto !important;padding-bottom: 70px;padding-left: 140px;padding-right: 140px" >
+
+            <nav class="col-md-2">
+                <nav class="row" style="padding-bottom: 40px">
+                    <div style="width: auto;margin: auto;height: 180px;padding:20px;background-size: contain" data-aos="fade-in">
+                        <img width="180px" height="180px" src="{% static 'assets/images/shashwat.jpg' %}"/>
+                    </div>
+                </nav>
+                <nav class="row">
+                    <div style="width: auto;margin: auto;height: auto;text-align: center;padding-left: 5px">
+                        Shashwat Mishra
+                    </div>
+                </nav>
+                <nav class="row" style="margin-top: 15px">
+                    <table style="width: auto;height:20px;margin: auto">
+                        <tr>
+                            <td>
+                                <span class="socicon-linkedin socicon icon size"></span>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <span class="socicon-facebook icon size"></span>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <span class="socicon-github socicon icon size"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </nav>
+
+            </nav>
+            <nav class="col-md-2" style="text-align: center">
+                <nav class="row" style="padding-bottom: 40px">
+                    <div style="width: auto;margin: auto;height: 180px;padding:20px;background-size: contain" data-aos="fade-in">
+                        <img width="180px" height="180px" src="{% static 'assets/images/utkarsh.jpeg' %}"/>
+                    </div>
+                </nav>
+                <nav class="row">
+                    <div style="width: auto;margin: auto;height: auto;text-align: center;padding-left: 5px">
+                        Utkarsh Sharma
+                    </div>
+                </nav>
+                <nav class="row" style="margin-top: 15px">
+                    <table style="width: auto;height:20px;margin: auto">
+                        <tr>
+                            <td>
+                                <span class="socicon-linkedin socicon icon size"></span>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <span class="socicon-facebook icon size"></span>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <span class="socicon-github socicon icon size"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </nav>
+
+            </nav>
+            <nav class="col-md-2">
+                <nav class="row" style="padding-bottom: 40px">
+                    <div style="width: auto;margin: auto;height: 180px;padding:20px;background-size: contain" data-aos="fade-in">
+                        <img width="180px" height="180px" src="{% static 'assets/images/sanyog.jpg' %}"/>
+                    </div>
+                </nav>
+                <nav class="row">
+                    <div style="width: auto;margin: auto;height: auto;text-align: center;padding-left: 5px">
+                        Sanyog Ghosh
+                    </div>
+                </nav>
+                <nav class="row" style="margin-top: 15px">
+                    <table style="width: auto;height:20px;margin: auto">
+                        <tr>
+                            <td>
+                                <span class="socicon-linkedin socicon icon size"></span>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <span class="socicon-facebook icon size"></span>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <span class="socicon-github socicon icon size"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </nav>
+
+            </nav>
+            <nav class="col-md-2">
+                <nav class="row" style="padding-bottom: 40px">
+                    <div style="width: auto;margin: auto;height: 180px;padding:20px;background-size: contain" data-aos="fade-in">
+                        <img width="180px" height="180px" src="{% static 'assets/images/manjunath.jpg' %}"/>
+                    </div>
+                </nav>
+                <nav class="row">
+                    <div style="width: auto;margin: auto;height: auto;text-align: center;padding-left: 5px">
+                        Majunatha Bairi
+                    </div>
+                </nav>
+                <nav class="row" style="margin-top: 15px">
+                    <table style="width: auto;height:20px;margin: auto">
+                        <tr>
+                            <td>
+                                <span class="socicon-linkedin socicon icon size"></span>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <span class="socicon-facebook icon size"></span>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <span class="socicon-github socicon icon size"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </nav>
+
+            </nav>
+            <nav class="col-md-2">
+                <nav class="row" style="padding-bottom: 40px">
+                    <div style="width: auto;margin: auto;height: 180px;padding:20px;background-size: contain" data-aos="fade-in">
+                        <img width="180px" height="180px" src="{% static 'assets/images/keshav.jpg' %}"/>
+                    </div>
+                </nav>
+                <nav class="row">
+                    <div style="width: auto;margin: auto;height: auto;text-align: center;padding-left: 5px">
+                        Keshav Garg
+                    </div>
+                </nav>
+                <nav class="row" style="margin-top: 15px">
+                    <table style="width: auto;height:20px;margin: auto">
+                        <tr>
+                            <td>
+                                <span class="socicon-linkedin socicon icon size"></span>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <span class="socicon-facebook icon size"></span>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <span class="socicon-github socicon icon size"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </nav>
+
+            </nav>
+            <nav class="col-md-2">
+                <nav class="row" style="padding-bottom: 40px">
+                    <div style="width: auto;margin: auto;height: 180px;padding:20px;background-size: contain" data-aos="fade-in">
+                        <img width="180px" height="180px" src="{% static 'assets/images/soni.jpeg' %}"/>
+                    </div>
+                </nav>
+                <nav class="row">
+                    <div style="width: auto;margin: auto;height: auto;text-align: center;padding-left: 5px">
+                        Ayush Soni
+                    </div>
+                </nav>
+                <nav class="row" style="margin-top: 15px">
+                    <table style="width: auto;height:20px;margin: auto">
+                        <tr>
+                            <td>
+                                <span class="socicon-linkedin socicon icon size"></span>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <span class="socicon-facebook icon size"></span>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <span class="socicon-github socicon icon size"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </nav>
+            </nav>
+        </nav>
+    </nav>
+</section>
+
+<script>
+    var p = document.getElementById('typedtext');
+    var n = 0;
+    var str = 'Tab Over Space';
+    var pa = document.createElement("P");
+
+    var pa = '<span class=border_dash>'+"_"+'</span>';
+    var typeTimer = setInterval(function() {
+        n = n + 1;
+        p.innerHTML = "" + str.slice(0, n);
+        if (n === str.length) {
+            clearInterval(typeTimer);
+            p.innerHTML = "" + str;
+            n = 0;
+            setInterval(function() {
+
+                if (n === 0) {
+                    p.innerHTML = "" + str + pa;
+                    n = 1;
+                } else {
+                    p.innerHTML = "" + str;
+                    n = 0;
+                };
+            }, 500);
+        };
+    }, 120)
+</script>
+{% endblock %}

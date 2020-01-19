@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+a.button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+  color: initial;
+}
+.green{
+  border: none;
+  color: white;
+  padding: 4px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  float: right;
+  background-color: #4CAF50;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.green:hover {
+  background-color: #119137; /* Green */
+  color: white;
+}
+.login,
+.sign-in {
+    color: violet;
+}

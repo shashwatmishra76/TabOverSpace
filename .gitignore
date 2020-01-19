@@ -1,0 +1,2 @@
+//Ignores the py-cache files created while running the website locally
+*.pyc

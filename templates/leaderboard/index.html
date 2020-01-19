@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+TabOverSpace | Leaderboard
+{% endblock %}
+
+{% block add-css-files %}
+<style>
+    .table_options{
+        color:white;
+        margin-left: 12px;
+    }
+
+    .question-box2{
+        color: white;
+        border-radius: 6px;
+        height: auto;
+        width: 820px;
+        margin-bottom: 20px;
+        padding: 16px 8px 16px 12px;
+        min-width: 600px;
+    }
+
+    .lead{
+        width: 230px;
+        height: 125px;
+        margin-top:20px;
+        border-radius: 6px;
+        box-shadow: 8px 8px #000;
+        margin-left: 28px !important;
+        background-image: linear-gradient(to bottom right, #8334b3, #3c33b2);
+    }
+
+    body{
+        overflow-x: hidden
+    }
+    .flagImage{
+        width: 30px;
+        height: 20px;
+        border-radius: 4px;
+        background: grey;
+        margin-left: 13px;
+        margin-right: 5px;
+    }
+    .cropImage{
+        width: 50px;
+        height: 50px;
+        box-shadow: 4px 4px #000;
+        margin-top: 5px;
+        border-radius: 25px;
+        background: white;
+    }
+</style>
+{% endblock %}
+
+{% block add-js-files %}
+<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+<script>
+    var app = angular.module("myApp",[]);
+    app.controller("myCtrl", function($scope){
+        $scope.myObj2 = [
+            {rank:"1", name:"Ram Rahim"},
+            {rank:"2", name:"Ayush Soni"},
+            {rank:"3", name:"Shashwat Mishra"},
+            {rank:"4", name:"Satyam Singh"},
+            {rank:"5", name:"Sarvinder Kulkarni"},
+            {rank:"6", name:"Brijesh Mahapati"},
+            {rank:"7", name:"Walid Khan"}
+        ]
+    })
+</script>
+{% endblock %}
+
+{% block main-content %}
+<div class=" raleway">
+
+    {% verbatim %}
+    <div class="row" style="margin-bottom:40px;margin-top: 150px" ng-app="myApp" ng-controller="myCtrl" ng-cloak >
+
+        <div style="margin-left: auto">
+
+        </div>
+
+        <table>
+            <tr>
+                <td>
+                    <div>
+                        <table>
+                            <th>
+                                <div id="Leaderboard" class="raleway" style="text-align:left;color:#fff;margin-bottom:-20px"><p style="font-weight: 600"><span style="padding: 10px;font-size: 32px">Leaderboard/Global Algo/></span></p>
+                                </div>
+                            </th>
+                            <tr style="color: aliceblue;padding: 0px">
+                                <td>
+                                    <div>
+                                        <table style="margin-top: 40px">
+                                            <tr>
+                                                <td style="width: 400px !important;padding: 0px">
+                                                    <button id="label" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #18191D; border: none;outline: none;cursor: pointer;margin-bottom: 10px;margin-left: 5px;margin-right: 20px">
+                                                        <span id ="hello" style="color: white;font-size: 20px">
+                                                            User Details    
+                                                        </span>
+                                                    </button>
+                                                </td>
+                                                <td style="width: 150px !important;padding: 0px">
+                                                    <button id="label" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #18191D; border: none;outline: none;cursor: pointer;margin-bottom: 10px">
+                                                        <span id ="hello" style="color: white;font-size: 20px">
+                                                            Score
+                                                        </span>
+                                                        <span style="color: aliceblue">&#9660;</span>
+                                                    </button>
+                                                </td>
+                                                <td style="width: 280px !important">
+                                                    <button id="label" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #18191D; border: none;outline: none;cursor: pointer;margin-bottom: 10px">
+                                                        <span id ="hello" style="color: white;font-size: 20px">
+                                                            No. of Problems
+                                                        </span>
+                                                        <span style="color: aliceblue">&#9660;</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-repeat="x in myObj2" class="table_options" ng-cloak>
+                                <td>
+                                    <div class="question-box2">
+                                        <table style="width: 800px">
+                                            <tr>
+                                                <td style="vertical-align: top">
+                                                    <div class="cropImage"></div>
+                                                </td>
+                                                <td>
+                                                    <table>
+                                                        <tr>
+                                                            <div style="width: 280px;word-wrap: break-word">
+                                                                <p style="margin-left:14px;margin-top:0px;margin-bottom: 5px;width: 280px;font-size: 15px">{{x.rank}}.&nbsp;{{x.name}}</p>
+                                                            </div>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="flagImage"></div>
+                                                            </td>
+                                                            <td>
+                                                                <div style="width: 295px;word-wrap: break-word">
+                                                                    <p style="margin-left:4px;margin-top:0px;margin-bottom: 0px;width: 200px;font-size: 12px;font-weight: 100">Birla Institute of Technology and Science</p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td style="width: 220px;vertical-align: top">
+                                                    <p style="margin-bottom: 4px;word-wrap: break-word;width: 150px"><span style="color:white;font-weight:100;font-size:15px;margin-left:4px">5000.0 &nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+                                                </td>
+                                                <td style="width: 200px;vertical-align: top">
+                                                    <p style="margin-bottom: 4px;word-wrap: break-word;width: 150px"><span style="color:white;font-weight:100;font-size:15px;margin-left:4px">200 &nbsp;&nbsp;&nbsp;&nbsp;</span> </p>
+                                                </td>
+                                                {% endverbatim %}
+
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td style="vertical-align: top">
+                    <div style="margin-right: 100px;margin-top: 90px">
+
+                        <div class="lead">
+
+                            <p style="color:white;font-size: 16px;padding-left: 12px;padding-top: 12px;font-weight: 600">Weekly Leaderboard</p>
+                            <p style="color:white;font-size: 16px;margin-left: 12px;font-weight: 300">Rank <span style="color: #8a9e93;font-weight: 500">&nbsp;5</span>&nbsp;&nbsp; &nbsp;Score <span style="color: #8a9e93;font-weight: 500">&nbsp;756 ^</span></p>
+                            <p style="margin-left:200px;margin-top: 10px;color: aliceblue;cursor: pointer">&#9660;</p>
+                        </div>
+                        <div class="lead">
+                            <p style="color:white;font-size: 16px;padding-left: 12px;padding-top: 12px;font-weight: 600">College Leaderboard</p>
+                            <p style="color:white;font-size: 16px;margin-left: 12px;font-weight: 300">Rank <span style="color: #8a9e93;font-weight: 500">&nbsp;5</span>&nbsp;&nbsp; &nbsp;Score <span style="color: #8a9e93;font-weight: 500">&nbsp;900 ^</span></p>
+                            <p style="margin-left:200px;margin-top: 10px;color: white;cursor: pointer">&#9660;</p>
+                        </div>
+                        <div class="lead">
+                            <p style="color:white;font-size: 16px;padding-left: 12px;padding-top: 12px;font-weight: 600">Global Data-Structures</p>
+                            <p style="color:white;font-size: 16px;margin-left: 12px;font-weight: 300">Rank <span style="color: #8a9e93;font-weight: 500">&nbsp;5</span>&nbsp;&nbsp; &nbsp;Score <span style="color: #8a9e93;font-weight: 500">&nbsp;900 ^</span></p>
+                            <p style="margin-left:200px;margin-top: 10px;color: white;cursor: pointer">&#9660;</p>
+                        </div>
+                        <!--    <canvas style="margin-left: 38px;margin-top: 40px" id="myChart" width="400" height="400"></canvas> -->
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% endblock %}
